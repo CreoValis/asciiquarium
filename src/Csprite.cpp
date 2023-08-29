@@ -442,15 +442,15 @@ bool Csprite::collidesWith(Csprite &c)
 
 std::pair<int, int> Csprite::getCenterPoint(void)
 {
-	return std::pair<int, int>(m_pos.m_x + get_width() / 2, m_pos.m_y + get_height() / 2);
+	return std::pair<int, int>((int)(m_pos.m_x + get_width() / 2), (int)(m_pos.m_y + get_height() / 2));
 }
 
 std::pair<int, int> Csprite::getCollisionPoint(void)
 {
 	int x, y;
 
-	x = (m_sens == DIR_RIGHT) ? m_pos.m_x + m_width + m_collX : m_pos.m_x - m_collX ;
-	y = m_pos.m_y + m_collY;
+	x = (m_sens == DIR_RIGHT) ? (int)m_pos.m_x + m_width + m_collX : (int)m_pos.m_x - m_collX ;
+	y = (int)m_pos.m_y + m_collY;
 
 	return std::pair<int, int>(x, y);
 }
