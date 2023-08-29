@@ -20,11 +20,13 @@ char *dupliqueChaine(const char *source)
     if (source==NULL)
         return(NULL);
     
-    ret = allouecharbuffer( strlen(source) );
+    size_t sourcelen = strlen(source);
+    ret = allouecharbuffer( sourcelen );
     if (ret==NULL)
         return(NULL);
 
-    strcpy(ret, source);
+    memcpy(ret, source, sourcelen);
+    ret[sourcelen]='\0';
     return(ret);
 }
 
@@ -40,12 +42,15 @@ char *dupliqueConcatChaine(const char *source1, const char *source2)
     if (source2==NULL)
         return( dupliqueChaine(source1) );
 
-    ret = allouecharbuffer( strlen(source1)+strlen(source2) );
+    size_t source1len = strlen(source1), source2len = strlen(source2);
+
+    ret = allouecharbuffer( source1len + source2len );
     if (ret==NULL)
         return(NULL);
 
-    strcpy(ret, source1);
-    strcat(ret, source2);
+    memcpy(ret, source1, source1len);
+    memcpy(ret + source1len, source2, source2len);
+    ret[source1len + source2len]='\0';
     return(ret);
 }
 
