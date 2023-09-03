@@ -100,12 +100,12 @@ BOOL CasciiquariumApp::InitInstance()
 		cFlag = csCmdLine[nFwdSlash+1];
 	if ( cFlag == 'p' && csCmdLine.GetLength() > nFwdSlash + 3 )
 		hwndParent = (HWND)atoi( &((LPCTSTR)csCmdLine)[nFwdSlash+2] );
-int nbp;
-int hidewater;
-int exitOnEsc;
- nbp      = AfxGetApp()->GetProfileInt(   "param",   "nbpoisson",     6 );
- hidewater= AfxGetApp()->GetProfileInt(   "param",   "sansEau",       0 );
- exitOnEsc= AfxGetApp()->GetProfileInt(   "param",   "exitOnlyOnESC", 0 );
+	int nbp;
+	int hidewater;
+	int exitOnEsc;
+	 nbp      = AfxGetApp()->GetProfileInt(   "param",   "nbpoisson",     6 );
+	 hidewater= AfxGetApp()->GetProfileInt(   "param",   "sansEau",       0 );
+	 exitOnEsc= AfxGetApp()->GetProfileInt(   "param",   "exitOnlyOnESC", 0 );
 
 	if ( tolower(cFlag) == 'c' )
 	{
@@ -114,62 +114,50 @@ int exitOnEsc;
 		CasciiquariumDlg dlg( pParent );
 		m_pMainWnd = &dlg;
 
-        dlg.m_nbpoisson    = nbp;
-        dlg.m_SansEau      = hidewater;
+		dlg.m_nbpoisson    = nbp;
+		dlg.m_SansEau      = hidewater;
 		dlg.m_ExitOnlyOnESC= exitOnEsc;
 
 
-        int nResponse = dlg.DoModal();
+		int nResponse = dlg.DoModal();
 		if (nResponse == IDOK)
 		{
-            AfxGetApp()->WriteProfileInt(   "param",   "nbpoisson",     dlg.m_nbpoisson);
-            AfxGetApp()->WriteProfileInt(   "param",   "sansEau",       dlg.m_SansEau);
-            AfxGetApp()->WriteProfileInt(   "param",   "exitOnlyOnESC", dlg.m_ExitOnlyOnESC);
-        }
+			AfxGetApp()->WriteProfileInt(   "param",   "nbpoisson",     dlg.m_nbpoisson);
+			AfxGetApp()->WriteProfileInt(   "param",   "sansEau",       dlg.m_SansEau);
+			AfxGetApp()->WriteProfileInt(   "param",   "exitOnlyOnESC", dlg.m_ExitOnlyOnESC);
+		}
 		else if (nResponse == IDCANCEL)
 		{
 		}
 	}
 	else
-    {
-        // Run screen saver either desktop or preview
-        m_pSaverWindow = new CSaverWindow;
+	{
+		// Run screen saver either desktop or preview
+		m_pSaverWindow = new CSaverWindow;
 
-  m_pSaverWindow->m_nbpoissondesire = nbp;
-  m_pSaverWindow->m_sansEau   = hidewater;
-  m_pSaverWindow->m_exitOnEsc = exitOnEsc;
+		m_pSaverWindow->m_nbpoissondesire = nbp;
+		m_pSaverWindow->m_sansEau   = hidewater;
+		m_pSaverWindow->m_exitOnEsc = exitOnEsc;
 
-        if ( m_pSaverWindow->Create(hwndParent) )
-        {
-            m_pMainWnd = m_pSaverWindow;
+		if ( m_pSaverWindow->Create(hwndParent) )
+		{
+			m_pMainWnd = m_pSaverWindow;
 			return TRUE;
 		}
 	}
-
-
-
-
-
-
-
-
-
-
-
 
 	// Since the dialog has been closed, return FALSE so that we exit the
 	//  application, rather than start the application's message pump.
 	return FALSE;
 }
 
-
 int CasciiquariumApp::ExitInstance()
 {
-  if (m_pSaverWindow)
-     delete m_pSaverWindow;
+	if (m_pSaverWindow)
+		delete m_pSaverWindow;
 
 
-   return CWinApp::ExitInstance();
+	return CWinApp::ExitInstance();
 }
 
 
