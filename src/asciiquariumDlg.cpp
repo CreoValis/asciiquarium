@@ -75,6 +75,7 @@ void CasciiquariumDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Check(pDX, IDC_CHECKQUITESC, m_ExitOnlyOnESC);
 	DDX_Text(pDX, IDC_KEYSEQ, m_keySeq);
 	DDX_Control(pDX, IDC_KEYSEQ, m_edtKeySeq);
+   DDX_Control(pDX, IDC_FONTSIZE, m_edtFontSize);
 }
 
 BEGIN_MESSAGE_MAP(CasciiquariumDlg, CDialog)

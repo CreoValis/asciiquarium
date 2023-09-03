@@ -62,5 +62,6 @@ private:
 	bool keyseq_hasFocus;
 public:
 	CEdit m_edtKeySeq;
+	CEdit m_edtFontSize;
 	afx_msg void OnEnUpdateKeyseq();
 };

@@ -16,13 +16,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -40,21 +38,26 @@ BEGIN
     DEFPUSHBUTTON   "OK",IDOK,113,41,50,14,WS_GROUP
 END
 
-IDD_ASCIIQUARIUM_DIALOG DIALOGEX 0, 0, 315, 141
+IDD_ASCIIQUARIUM_DIALOG DIALOGEX 0, 0, 395, 141
 STYLE DS_SETFONT | DS_FIXEDSYS | WS_MAXIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
 EXSTYLE WS_EX_CONTROLPARENT | WS_EX_APPWINDOW
 CAPTION "asciiquarium"
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    EDITTEXT        ID_NBPOISSON,7,23,47,14,ES_AUTOHSCROLL | ES_NUMBER
-    CONTROL         "Hide the\nwater",IDC_CHECKWATER,"Button",BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,7,41,46,21
-    CONTROL         "Exit only\non Esc",IDC_CHECKQUITESC,"Button",BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,7,60,46,21
-    EDITTEXT        IDC_KEYSEQ,7,84,48,14,ES_AUTOHSCROLL
-    DEFPUSHBUTTON   "OK",IDOK,7,103,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,7,120,50,14
-    LTEXT           "Number of fish",IDC_STATIC,7,12,48,8
+    EDITTEXT        ID_NBPOISSON,84,12,47,14,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Hide the water",IDC_CHECKWATER,"Button",BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,6,30,113,8
+    CONTROL         "Exit only on Esc",IDC_CHECKQUITESC,"Button",BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,6,42,107,8
+    EDITTEXT        IDC_KEYSEQ,84,54,48,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,84,120,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,6,120,50,14
+    LTEXT           "Number of fish",IDC_STATIC,7,12,71,8
     CONTROL         "",IDC_RECT,"Static",SS_OWNERDRAW,23,3,36,8
-    EDITTEXT        IDC_CREDIT,62,3,246,131,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    EDITTEXT        IDC_CREDIT,142,3,246,131,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    LTEXT           "Key seq to exit",IDC_STATIC,6,54,72,8
+    COMBOBOX        IDC_FONTFAMILY,6,84,126,30,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Font family",IDC_STATIC,6,72,72,8
+    EDITTEXT        IDC_FONTSIZE,84,102,48,14,ES_AUTOHSCROLL
+    LTEXT           "Font size",IDC_STATIC,6,102,72,8
 END
 
 
@@ -103,7 +106,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_ABOUTBOX, DIALOG
     BEGIN
@@ -116,7 +119,7 @@ BEGIN
     IDD_ASCIIQUARIUM_DIALOG, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 308
+        RIGHTMARGIN, 388
         TOPMARGIN, 3
         BOTTOMMARGIN, 134
     END
@@ -126,20 +129,31 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 //
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_ASCIIQUARIUM_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
 // String Table
 //
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDS_ABOUTBOX            "&About asciiquarium..."
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_APP_TITLE       "Asciiquarium"
 END
 
-#endif    // English (U.S.) resources
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -147,10 +161,8 @@ END
 // French (France) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_FRA)
-#ifdef _WIN32
 LANGUAGE LANG_FRENCH, SUBLANG_FRENCH
 #pragma code_page(1252)
-#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -200,13 +212,16 @@ END
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\asciiquarium.ico"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Cursor
 //
 
 IDC_CURSOR1             CURSOR                  "res\\cursor1.cur"
+
 IDC_CURSOR2             CURSOR                  "res\\cursor2.cur"
+
 #endif    // French (France) resources
 /////////////////////////////////////////////////////////////////////////////
 

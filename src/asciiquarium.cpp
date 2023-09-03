@@ -103,9 +103,11 @@ BOOL CasciiquariumApp::InitInstance()
 	int nbp;
 	int hidewater;
 	int exitOnEsc;
-	 nbp      = AfxGetApp()->GetProfileInt(   "param",   "nbpoisson",     6 );
-	 hidewater= AfxGetApp()->GetProfileInt(   "param",   "sansEau",       0 );
-	 exitOnEsc= AfxGetApp()->GetProfileInt(   "param",   "exitOnlyOnESC", 0 );
+	int fontSize;
+	 nbp      = AfxGetApp()->GetProfileInt("param", "nbpoisson", 6);
+	 hidewater= AfxGetApp()->GetProfileInt("param", "sansEau", 0);
+	 exitOnEsc= AfxGetApp()->GetProfileInt("param", "exitOnlyOnESC", 0);
+	 fontSize = AfxGetApp()->GetProfileInt("param", "fontSize", 0);
 
 	if ( tolower(cFlag) == 'c' )
 	{
