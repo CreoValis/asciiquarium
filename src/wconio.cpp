@@ -291,7 +291,7 @@ void AjustColor(COLORREF cfondGraphe)
 }
 
 ///////////////////////
-bool initWindow(HWND hwnd, BOOL parentBackgroud /*if possible*/)
+bool initWindow(HWND hwnd, BOOL parentBackgroud /*if possible*/, int fontSize)
 {
     m_hwnd=hwnd;
 
@@ -310,7 +310,7 @@ bool initWindow(HWND hwnd, BOOL parentBackgroud /*if possible*/)
 
 
 
-    int hauteur=16;//20;
+    int hauteur=fontSize>1 ? fontSize : 16;
     bool okfont;
     int sens=0;
     do

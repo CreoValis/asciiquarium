@@ -119,14 +119,15 @@ BOOL CasciiquariumApp::InitInstance()
 		dlg.m_nbpoisson    = nbp;
 		dlg.m_SansEau      = hidewater;
 		dlg.m_ExitOnlyOnESC= exitOnEsc;
-
+		dlg.m_fontSize = fontSize;
 
 		int nResponse = dlg.DoModal();
 		if (nResponse == IDOK)
 		{
-			AfxGetApp()->WriteProfileInt(   "param",   "nbpoisson",     dlg.m_nbpoisson);
-			AfxGetApp()->WriteProfileInt(   "param",   "sansEau",       dlg.m_SansEau);
-			AfxGetApp()->WriteProfileInt(   "param",   "exitOnlyOnESC", dlg.m_ExitOnlyOnESC);
+			AfxGetApp()->WriteProfileInt("param", "nbpoisson", dlg.m_nbpoisson);
+			AfxGetApp()->WriteProfileInt("param", "sansEau", dlg.m_SansEau);
+			AfxGetApp()->WriteProfileInt("param", "exitOnlyOnESC", dlg.m_ExitOnlyOnESC);
+			AfxGetApp()->WriteProfileInt("param", "fontSize", dlg.m_fontSize);
 		}
 		else if (nResponse == IDCANCEL)
 		{
@@ -140,6 +141,7 @@ BOOL CasciiquariumApp::InitInstance()
 		m_pSaverWindow->m_nbpoissondesire = nbp;
 		m_pSaverWindow->m_sansEau   = hidewater;
 		m_pSaverWindow->m_exitOnEsc = exitOnEsc;
+		m_pSaverWindow->m_fontSize = fontSize;
 
 		if ( m_pSaverWindow->Create(hwndParent) )
 		{
