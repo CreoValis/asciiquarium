@@ -63,6 +63,6 @@ private:
 	bool keyseq_hasFocus;
 public:
 	CEdit m_edtKeySeq;
-	CEdit m_edtFontSize;
+	CComboBox m_cbfontFamily;
 	afx_msg void OnEnUpdateKeyseq();
 };

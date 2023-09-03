@@ -45,6 +45,20 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 END_MESSAGE_MAP()
 
+int CALLBACK FixedFontsCB(
+   _In_ const LOGFONT *lpelf,
+   _In_ const TEXTMETRIC *lpntm,
+   _In_ DWORD         FontType,
+   _In_ LPARAM        lParam
+)
+{
+   std::vector<CString> *Target=(std::vector<CString> *)lParam;
+   if ((lpelf->lfPitchAndFamily & 0x3) == FIXED_PITCH)
+      Target->push_back(CString(lpelf->lfFaceName));
+
+   return 1;
+}
+
 
 // CasciiquariumDlg dialog
 
@@ -77,6 +91,7 @@ void CasciiquariumDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_KEYSEQ, m_edtKeySeq);
    DDX_Text(pDX, IDC_FONTSIZE, m_fontSize);
    DDV_MinMaxInt(pDX, m_fontSize, 0, 120);
+   DDX_Control(pDX, IDC_FONTFAMILY, m_cbfontFamily);
 }
 
 BEGIN_MESSAGE_MAP(CasciiquariumDlg, CDialog)
@@ -126,6 +141,14 @@ BOOL CasciiquariumDlg::OnInitDialog()
 
 
 	// TODO: Add extra initialization here
+
+   //Enumerate the list of possible fonts.
+   {
+      std::vector<CString> FFamilies;
+      EnumFontFamilies(GetDC()->m_hDC, NULL, &FixedFontsCB, (LPARAM)&FFamilies);
+      for (size_t x=0; x!=FFamilies.size(); ++x)
+         m_cbfontFamily.InsertString((int)x, FFamilies[x].GetBuffer());
+   }
 
 /*
 MoveWindow( 100, 150, 300, 200, FALSE );
