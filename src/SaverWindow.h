@@ -54,6 +54,7 @@ public:
 int m_nbpoissondesire;
 int m_sansEau;
 int m_exitOnEsc;
+int m_fontSize;
 
 Caquarium aqua;
 	// Generated message map functions

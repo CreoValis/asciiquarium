@@ -47,6 +47,7 @@ public:
     int m_nbpoisson;
     BOOL m_SansEau;
 	BOOL m_ExitOnlyOnESC;
+	int m_fontSize;
     afx_msg void OnTimer(UINT_PTR nIDEvent);
     afx_msg void OnSize(UINT nType, int cx, int cy);
     afx_msg void OnSizing(UINT fwSide, LPRECT pRect);
@@ -62,5 +63,6 @@ private:
 	bool keyseq_hasFocus;
 public:
 	CEdit m_edtKeySeq;
+	CEdit m_edtFontSize;
 	afx_msg void OnEnUpdateKeyseq();
 };

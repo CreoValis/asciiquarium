@@ -1929,7 +1929,8 @@ Caquarium::Caquarium()
 	m_randTotWeight = 0;
 }
 
-void Caquarium::init_scene(HWND hwnd, BOOL parentBackgroud /*if possible*/, int anim_period, int nbfish_desired, int sansEau, double densite, bool favoriseCredits)
+void Caquarium::init_scene(HWND hwnd, BOOL parentBackgroud /*if possible*/, int anim_period, int nbfish_desired, int sansEau, double densite, bool favoriseCredits,
+   int fontSize)
 {
 #ifdef _DEBUG
 	ShowConsoleWindow(TRUE);
@@ -1952,7 +1953,7 @@ void Caquarium::init_scene(HWND hwnd, BOOL parentBackgroud /*if possible*/, int 
 	anim_period+=15;
 	ANIMATION_TICK_LENGTH =		m_anim_period= anim_period;
 	ANIMATION_TICK_LENGTH = max(15,ANIMATION_TICK_LENGTH);
-    initViewPort(hwnd,parentBackgroud);
+    initViewPort(hwnd,parentBackgroud, fontSize);
 
     SetViewportInputProps();
 
