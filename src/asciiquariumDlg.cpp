@@ -105,6 +105,8 @@ BEGIN_MESSAGE_MAP(CasciiquariumDlg, CDialog)
     ON_WM_SIZE()
     ON_WM_SIZING()
     ON_BN_CLICKED(IDC_CHECKWATER, &CasciiquariumDlg::OnBnClickedCheckwater)
+   ON_EN_CHANGE(IDC_FONTSIZE, &CasciiquariumDlg::OnBnClickedCheckwater)
+   ON_CBN_SELCHANGE(IDC_FONTFAMILY, &CasciiquariumDlg::OnBnClickedCheckwater)
 	ON_EN_UPDATE(IDC_KEYSEQ, &CasciiquariumDlg::OnEnUpdateKeyseq)
 END_MESSAGE_MAP()
 
