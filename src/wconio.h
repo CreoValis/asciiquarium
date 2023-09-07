@@ -4,7 +4,7 @@
 
 
 
-bool initWindow(HWND hwnd, BOOL parentBackgroud /*if possible*/, int fontSize = 0);
+bool initWindow(HWND hwnd, BOOL parentBackgroud /*if possible*/, int fontSize = 0, const char *fontFamily=NULL);
 void closeWindow(void);
 
 void setWindowcursor(int x, int y);

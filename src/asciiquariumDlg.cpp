@@ -45,6 +45,20 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 END_MESSAGE_MAP()
 
+int CALLBACK FixedFontsCB(
+   _In_ const LOGFONT *lpelf,
+   _In_ const TEXTMETRIC *lpntm,
+   _In_ DWORD         FontType,
+   _In_ LPARAM        lParam
+)
+{
+   std::vector<CString> *Target=(std::vector<CString> *)lParam;
+   if ((lpelf->lfPitchAndFamily & 0x3) == FIXED_PITCH)
+      Target->push_back(CString(lpelf->lfFaceName));
+
+   return 1;
+}
+
 
 // CasciiquariumDlg dialog
 
@@ -77,6 +91,8 @@ void CasciiquariumDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_KEYSEQ, m_edtKeySeq);
    DDX_Text(pDX, IDC_FONTSIZE, m_fontSize);
    DDV_MinMaxInt(pDX, m_fontSize, 0, 120);
+   DDX_Text(pDX, IDC_FONTFAMILY, m_fontFamily);
+   DDX_Control(pDX, IDC_FONTFAMILY, m_cbfontFamily);
 }
 
 BEGIN_MESSAGE_MAP(CasciiquariumDlg, CDialog)
@@ -89,6 +105,8 @@ BEGIN_MESSAGE_MAP(CasciiquariumDlg, CDialog)
     ON_WM_SIZE()
     ON_WM_SIZING()
     ON_BN_CLICKED(IDC_CHECKWATER, &CasciiquariumDlg::OnBnClickedCheckwater)
+   ON_EN_CHANGE(IDC_FONTSIZE, &CasciiquariumDlg::OnBnClickedCheckwater)
+   ON_CBN_SELCHANGE(IDC_FONTFAMILY, &CasciiquariumDlg::OnBnClickedCheckwater)
 	ON_EN_UPDATE(IDC_KEYSEQ, &CasciiquariumDlg::OnEnUpdateKeyseq)
 END_MESSAGE_MAP()
 
@@ -127,6 +145,24 @@ BOOL CasciiquariumDlg::OnInitDialog()
 
 	// TODO: Add extra initialization here
 
+   //Enumerate the list of possible fonts.
+   {
+      std::vector<CString> FFamilies;
+      EnumFontFamilies(GetDC()->m_hDC, NULL, &FixedFontsCB, (LPARAM)&FFamilies);
+      std::sort(FFamilies.begin(), FFamilies.end());
+
+      size_t selectedIdx=~(size_t)0;
+      for (size_t x=0; x!=FFamilies.size(); ++x)
+      {
+         m_cbfontFamily.InsertString((int)x, FFamilies[x].GetBuffer());
+         if (selectedIdx==~(size_t)0 && FFamilies[x]==m_fontFamily)
+            selectedIdx=x;
+      }
+
+      if (selectedIdx<FFamilies.size())
+         m_cbfontFamily.SetCurSel(selectedIdx);
+   }
+
 /*
 MoveWindow( 100, 150, 300, 200, FALSE );
 
@@ -164,7 +200,8 @@ UpdateData(FALSE);
         espY = rclient.bottom - rectW.bottom;;
 
         // initialise l'animation
-      aqua.init_scene(w->GetSafeHwnd(),TRUE, 50, 1, m_SansEau, DENSITE_POISSON_PREVIEW, true);
+      aqua.init_scene(w->GetSafeHwnd(),TRUE, 50, 1, m_SansEau, DENSITE_POISSON_PREVIEW, true, m_fontSize,
+         !m_fontFamily.IsEmpty() ? m_fontFamily.GetBuffer() : NULL);
       SetTimer( REDRAW_TIMER_ID, REDRAW_TIMERVAL, NULL );
     }
 
@@ -290,7 +327,8 @@ void CasciiquariumDlg::OnSize(UINT nType, int cx, int cy)
             UpdateWindow();
 
             aqua.close_scene();
-            aqua.init_scene(w->GetSafeHwnd(), TRUE,50, 1, m_SansEau, DENSITE_POISSON_PREVIEW);
+            aqua.init_scene(w->GetSafeHwnd(), TRUE,50, 1, m_SansEau, DENSITE_POISSON_PREVIEW, false, m_fontSize,
+               !m_fontFamily.IsEmpty() ? m_fontFamily.GetBuffer() : NULL);
         }
 
     }
@@ -364,7 +402,8 @@ void CasciiquariumDlg::OnBnClickedCheckwater()
     if (w && ::IsWindow(w->GetSafeHwnd()) )
     {
         aqua.close_scene();
-        aqua.init_scene(w->GetSafeHwnd(), TRUE,50, 1, m_SansEau, DENSITE_POISSON_PREVIEW);
+        aqua.init_scene(w->GetSafeHwnd(), TRUE,50, 1, m_SansEau, DENSITE_POISSON_PREVIEW, false, m_fontSize,
+           !m_fontFamily.IsEmpty() ? m_fontFamily.GetBuffer() : NULL);
     }
 }
 

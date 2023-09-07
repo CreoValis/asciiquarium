@@ -55,6 +55,7 @@ public:
     CString m_Credit;
     afx_msg void OnBnClickedCheckwater();
 	CString m_keySeq;
+	CString m_fontFamily;
 private:
 	time_t m_saisie_lasttimekbd;
 #define MAXSAISIE 20
@@ -63,6 +64,6 @@ private:
 	bool keyseq_hasFocus;
 public:
 	CEdit m_edtKeySeq;
-	CEdit m_edtFontSize;
+	CComboBox m_cbfontFamily;
 	afx_msg void OnEnUpdateKeyseq();
 };

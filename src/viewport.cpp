@@ -12,13 +12,13 @@
 //#define USE_CONSOLE
 #define USE_WINDOW
 
-bool initViewPort(HWND hwnd, BOOL parentBackgroud /*if possible*/, int fontSize)
+bool initViewPort(HWND hwnd, BOOL parentBackgroud /*if possible*/, int fontSize, const char *fontFamily)
 {
 #ifdef USE_CONSOLE
 	initconsole();
 #endif
 #ifdef USE_WINDOW
-	initWindow(hwnd, parentBackgroud, fontSize);
+	initWindow(hwnd, parentBackgroud, fontSize, fontFamily);
 #endif
 
     return(true);
