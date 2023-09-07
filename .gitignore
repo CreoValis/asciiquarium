@@ -1,4 +1,5 @@
 src/.vs/
 src/*.vcxproj.user
+src/*.aps
 src/Release/
 src/Debug/
