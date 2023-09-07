@@ -55,6 +55,7 @@ public:
     CString m_Credit;
     afx_msg void OnBnClickedCheckwater();
 	CString m_keySeq;
+	CString m_fontFamily;
 private:
 	time_t m_saisie_lasttimekbd;
 #define MAXSAISIE 20

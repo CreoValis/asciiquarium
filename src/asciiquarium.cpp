@@ -104,10 +104,12 @@ BOOL CasciiquariumApp::InitInstance()
 	int hidewater;
 	int exitOnEsc;
 	int fontSize;
+	CString fontFamily;
 	 nbp      = AfxGetApp()->GetProfileInt("param", "nbpoisson", 6);
 	 hidewater= AfxGetApp()->GetProfileInt("param", "sansEau", 0);
 	 exitOnEsc= AfxGetApp()->GetProfileInt("param", "exitOnlyOnESC", 0);
 	 fontSize = AfxGetApp()->GetProfileInt("param", "fontSize", 0);
+	 fontFamily = AfxGetApp()->GetProfileString("param", "fontFamily");
 
 	if ( tolower(cFlag) == 'c' )
 	{
@@ -120,6 +122,7 @@ BOOL CasciiquariumApp::InitInstance()
 		dlg.m_SansEau      = hidewater;
 		dlg.m_ExitOnlyOnESC= exitOnEsc;
 		dlg.m_fontSize = fontSize;
+		dlg.m_fontFamily = fontFamily;
 
 		int nResponse = dlg.DoModal();
 		if (nResponse == IDOK)
@@ -128,6 +131,7 @@ BOOL CasciiquariumApp::InitInstance()
 			AfxGetApp()->WriteProfileInt("param", "sansEau", dlg.m_SansEau);
 			AfxGetApp()->WriteProfileInt("param", "exitOnlyOnESC", dlg.m_ExitOnlyOnESC);
 			AfxGetApp()->WriteProfileInt("param", "fontSize", dlg.m_fontSize);
+			AfxGetApp()->WriteProfileString("param", "fontFamily", dlg.m_fontFamily);
 		}
 		else if (nResponse == IDCANCEL)
 		{
@@ -142,6 +146,7 @@ BOOL CasciiquariumApp::InitInstance()
 		m_pSaverWindow->m_sansEau   = hidewater;
 		m_pSaverWindow->m_exitOnEsc = exitOnEsc;
 		m_pSaverWindow->m_fontSize = fontSize;
+		m_pSaverWindow->m_fontFamily = fontFamily;
 
 		if ( m_pSaverWindow->Create(hwndParent) )
 		{
