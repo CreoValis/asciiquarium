@@ -149,6 +149,8 @@ BOOL CasciiquariumDlg::OnInitDialog()
    {
       std::vector<CString> FFamilies;
       EnumFontFamilies(GetDC()->m_hDC, NULL, &FixedFontsCB, (LPARAM)&FFamilies);
+      std::sort(FFamilies.begin(), FFamilies.end());
+
       size_t selectedIdx=~(size_t)0;
       for (size_t x=0; x!=FFamilies.size(); ++x)
       {
