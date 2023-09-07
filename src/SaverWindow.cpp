@@ -322,7 +322,8 @@ int CSaverWindow::OnCreate(LPCREATESTRUCT lpCreateStruct)
       //::SetClassLong(this->m_hWnd,GCL_HCURSOR,  (LONG) hblank_curseur);   
 
  
-    aqua.init_scene(this->m_hWnd,FALSE, REDRAW_TIMERVAL, m_nbpoissondesire,m_sansEau, m_bPreview ? 0.15 : -1, false, m_fontSize);
+    aqua.init_scene(this->m_hWnd,FALSE, REDRAW_TIMERVAL, m_nbpoissondesire,m_sansEau, m_bPreview ? 0.15 : -1, false, m_fontSize,
+       !m_fontFamily.IsEmpty() ? m_fontFamily.GetBuffer() : NULL);
     SetTimer( REDRAW_TIMER_ID, REDRAW_TIMERVAL, NULL );
 	return 0;
 }

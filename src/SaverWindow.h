@@ -55,6 +55,7 @@ int m_nbpoissondesire;
 int m_sansEau;
 int m_exitOnEsc;
 int m_fontSize;
+CString m_fontFamily; //If empty, uses OS default
 
 Caquarium aqua;
 	// Generated message map functions

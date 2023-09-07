@@ -25,7 +25,7 @@ enum COLORS
 };
 
 
-bool initViewPort(HWND hwnd, BOOL parentBackgroud /*if possible*/, int fontSize = 0);
+bool initViewPort(HWND hwnd, BOOL parentBackgroud /*if possible*/, int fontSize = 0, const char *fontFamily=NULL);
 void closeViewPort(void);
 
 void SetCurrentViewportBuffer(int n);

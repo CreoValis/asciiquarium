@@ -291,7 +291,7 @@ void AjustColor(COLORREF cfondGraphe)
 }
 
 ///////////////////////
-bool initWindow(HWND hwnd, BOOL parentBackgroud /*if possible*/, int fontSize)
+bool initWindow(HWND hwnd, BOOL parentBackgroud /*if possible*/, int fontSize, const char *fontFamily)
 {
     m_hwnd=hwnd;
 
@@ -329,7 +329,7 @@ bool initWindow(HWND hwnd, BOOL parentBackgroud /*if possible*/, int fontSize)
             CLIP_DEFAULT_PRECIS,
             DEFAULT_QUALITY,
             DEFAULT_PITCH|FF_SWISS,  // FF_DECORATIVE, //FF_DONTCARE,//FF_MODERN,//FF_ROMAN,//FF_SCRIPT,//FF_SWISS,
-            NULL
+            fontFamily
             );
 
         //Définir le texte

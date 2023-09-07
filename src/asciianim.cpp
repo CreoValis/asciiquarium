@@ -1930,7 +1930,7 @@ Caquarium::Caquarium()
 }
 
 void Caquarium::init_scene(HWND hwnd, BOOL parentBackgroud /*if possible*/, int anim_period, int nbfish_desired, int sansEau, double densite, bool favoriseCredits,
-   int fontSize)
+   int fontSize, const char *fontFamily)
 {
 #ifdef _DEBUG
 	ShowConsoleWindow(TRUE);
@@ -1953,7 +1953,7 @@ void Caquarium::init_scene(HWND hwnd, BOOL parentBackgroud /*if possible*/, int 
 	anim_period+=15;
 	ANIMATION_TICK_LENGTH =		m_anim_period= anim_period;
 	ANIMATION_TICK_LENGTH = max(15,ANIMATION_TICK_LENGTH);
-    initViewPort(hwnd,parentBackgroud, fontSize);
+    initViewPort(hwnd,parentBackgroud, fontSize, fontFamily);
 
     SetViewportInputProps();
 

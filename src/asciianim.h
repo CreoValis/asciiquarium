@@ -38,7 +38,7 @@ public:
     // si densite<0 on utilise nbfish_desired sinon on utilise densite
     // densite = densité 'linéique' !
     void init_scene(HWND hwnd, BOOL parentBackgroud /*if possible*/, int anim_period, int nbfish_desired, int sansEau, double densite, bool favoriseCredits=false,
-       int fontSize = 0);
+       int fontSize = 0, const char *fontFamily = NULL);
     void close_scene(void);
     int drawnext_scene(void);// renvoi 1 si il faut arrêter
 
